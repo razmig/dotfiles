@@ -1,0 +1,31 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'lepture/vim-jinja'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'wincent/command-t'
+Plugin 'scrooloose/nerdTree'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+autocmd BufWritePre *.* :%s/\s\+$//e
+set number " show ruler
+set nowrap
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set cursorline  "Add line below the active line unde cursor
+colo Monokai   " skin name
+syntax on
+"Highlight the active split
+hi StatusLine ctermbg=yellow ctermfg=black "bg=dark 
+hi StatusLineNC cterm=none
