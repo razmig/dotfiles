@@ -29,3 +29,4 @@ syntax on
 "Highlight the active split
 hi StatusLine ctermbg=yellow ctermfg=black "bg=dark 
 hi StatusLineNC cterm=none
+nmap 0 ^
