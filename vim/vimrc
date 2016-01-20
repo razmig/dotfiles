@@ -14,6 +14,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,3 +34,13 @@ hi StatusLineNC cterm=none
 nmap 0 ^
 nmap k gk
 nmap j gj
+" Add some syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
