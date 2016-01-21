@@ -16,6 +16,21 @@ Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
+
+Plugin 'tpope/vim-surround'
+"Commands for surround plugin
+"ds<character>                  Delete surrounding <character>
+"cs<character><new character>   Replace surrounding <character> with <newcharacter>
+"ys<text-obj><character>        Surround text-object with <character>
+"dst                            Delete surround tag (works on HTML tags)
+
+Plugin 'tpope/vim-commentary'
+"Commands for Commenting"
+"gc2j   Comment down two lines
+"gcc    Comment out the current line
+"gcip   Comment out the current paragraph
+
+Plugin 'tpope/vim-repeat'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -44,3 +59,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:ctrlp_use_caching = 0
