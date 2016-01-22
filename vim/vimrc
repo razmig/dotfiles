@@ -10,7 +10,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
+
 Plugin 'airblade/vim-gitgutter'
+" ]c jump to next hunk (change) 
+" [c jump to previous hunk (change) 
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdTree'
@@ -35,7 +39,9 @@ Plugin 'tpope/vim-repeat'
 call vundle#end()            " required
 filetype plugin indent on    " required
 autocmd BufWritePre *.* :%s/\s\+$//e
-set number " show ruler
+" set number " show ruler
+set relativenumber
+set colorcolumn=80
 set nowrap
 set expandtab
 set shiftwidth=4
@@ -44,8 +50,6 @@ set cursorline  "Add line below the active line unde cursor
 colo Monokai   " skin name
 syntax on
 "Highlight the active split
-hi StatusLine ctermbg=yellow ctermfg=black "bg=dark 
-hi StatusLineNC cterm=none
 nmap 0 ^
 nmap k gk
 nmap j gj
@@ -55,9 +59,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0 
+let g:syntastic_check_on_open = 0 
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:ctrlp_use_caching = 0
+let g:ctrlp_max_files=0
