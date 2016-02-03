@@ -20,7 +20,7 @@ Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
-
+Plugin 'vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
@@ -35,9 +35,12 @@ Plugin 'tpope/vim-commentary'
 "gcip   Comment out the current paragraph
 
 Plugin 'tpope/vim-repeat'
+
+Plugin 'mattn/emmet-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+" filetype plugin indent on    " required
 autocmd BufWritePre *.* :%s/\s\+$//e
 " set number " show ruler
 set relativenumber
