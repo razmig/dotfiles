@@ -48,7 +48,6 @@ call vundle#end()            " required
 
 " filetype plugin indent on    " required
 autocmd BufWritePre *.* :%s/\s\+$//e
-" set number " show ruler
 set relativenumber
 set colorcolumn=80
 set nowrap
@@ -56,14 +55,29 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set cursorline  "Add line below the active line unde cursor
-colo Monokai   " skin name
-syntax on
+syntax enable
+colorscheme monokai
+
+set smartcase
+set ignorecase
+set incsearch
+set hlsearch
+nnoremap <ESC> :nohlsearch<CR>
+
+set clipboard=unnamed
 "Highlight the active split
 nmap 0 ^
 nmap k gk
 nmap j gj
 
 nmap <Enter> o<ESC>
+
+"Move lines up, down, left and right
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+nnoremap <C-h> <<
+nnoremap <C-l> >>
+
 " Add some syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -74,9 +88,14 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0 
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'javascript'] }
 
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+
+set list listchars=tab:\|\ 
+highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=8 guifg=8
+autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=8 guifg=8
+match Whitespace /  \+/
