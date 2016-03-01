@@ -7,7 +7,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
 
@@ -43,6 +42,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/cucumber.zip'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -84,6 +86,10 @@ nnoremap <C-h> <<
 vnoremap <C-h> <gv
 vnoremap <C-l> >gv
 
+" Scroll through the autocomple list with jk
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+
 " Add some syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -96,12 +102,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'javascript'] }
 
+let g:used_javascript_libs = 'chai,jquery,requirejs,react'
+
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
-set list listchars=tab:\|\ 
-highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=8 guifg=8
-autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=8 guifg=8
-match Whitespace /  \+/
