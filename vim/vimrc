@@ -72,8 +72,6 @@ nmap 0 ^
 nmap k gk
 nmap j gj
 
-nmap <Enter> o<ESC>
-
 "Move lines up, down, left and right
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -109,3 +107,11 @@ let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
+" Use silver searcher for grep 
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup
+endif
+" bind <C-g> to grep word under cursor and open in quickfix buffer
+nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
+nnoremap <C-x> :q <CR>
