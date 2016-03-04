@@ -45,6 +45,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'vim-scripts/taglist.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -110,8 +111,11 @@ let g:ctrlp_use_caching = 0
 " Use silver searcher for grep 
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup
+  set grepprg=ag\ --nogroup\ --hidden
 endif
 " bind <C-g> to grep word under cursor and open in quickfix buffer
 nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
 nnoremap <C-x> :q <CR>
+
+" Open function definition in a vertical split
+nnoremap <C-]> :vsp <CR>:exec("tag /".expand("<cword>"))<CR><C-w>L
