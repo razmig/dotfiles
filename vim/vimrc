@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+let mapleader = "\<Space>"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -116,6 +117,8 @@ endif
 " bind <C-g> to grep word under cursor and open in quickfix buffer
 nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
 nnoremap <C-x> :q <CR>
+
+nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
 " Open function definition in a vertical split
 nnoremap <C-]> :vsp <CR>:exec("tag /".expand("<cword>"))<CR><C-w>L
