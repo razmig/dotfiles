@@ -84,3 +84,5 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR="/Users/razmigyoussef/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+bindkey -v
+bindkey ‘^R’ history-incremental-search-backward
