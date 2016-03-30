@@ -86,3 +86,4 @@ export NVM_DIR="/Users/$USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 bindkey -v
 bindkey ‘^R’ history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
