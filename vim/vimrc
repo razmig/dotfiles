@@ -47,6 +47,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'kchmck/vim-coffee-script'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -56,6 +57,7 @@ set relativenumber
 set colorcolumn=80
 set nowrap
 set expandtab
+
 set shiftwidth=4
 set softtabstop=4
 set cursorline  "Add line below the active line unde cursor
@@ -122,3 +124,8 @@ nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
 " Open function definition in a vertical split
 nnoremap <C-]> :vsp <CR>:exec("tag /".expand("<cword>"))<CR><C-w>L
+autocmd VimEnter * NERDTree
+
+if filereadable(glob("~/.vimrc.local")) 
+    source ~/.vimrc.local
+endif
