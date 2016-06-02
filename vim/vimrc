@@ -47,6 +47,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'kchmck/vim-coffee-script'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,6 +58,7 @@ set relativenumber
 set colorcolumn=80
 set nowrap
 set expandtab
+set autoindent
 
 set shiftwidth=4
 set softtabstop=4
@@ -132,3 +134,6 @@ autocmd VimEnter * NERDTree
 if filereadable(glob("~/.vimrc.local")) 
     source ~/.vimrc.local
 endif
+
+" Auto hightlight the best match in autocomplete menu
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
