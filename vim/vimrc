@@ -49,7 +49,6 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'kchmck/vim-coffee-script'
-
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -57,6 +56,7 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'alexbyk/vim-ultisnips-js-testing'
+Plugin 'Yggdroot/indentLine'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -131,6 +131,11 @@ let g:ctrlp_use_caching = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+
+set list
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 
 " Use silver searcher for grep 
 if executable('ag')
