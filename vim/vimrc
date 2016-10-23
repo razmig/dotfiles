@@ -22,6 +22,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
 "cs<character><new character>   Replace surrounding <character> with <newcharacter>
@@ -67,6 +68,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" Disable the tab selection of the YouCompleteMe
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 " filetype plugin indent on    " required
 autocmd BufWritePre *.* :%s/\s\+$//e
@@ -132,10 +137,8 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
 let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
 
-set list
-set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list lcs=tab:\┆_
 
 " Use silver searcher for grep 
 if executable('ag')
