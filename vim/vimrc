@@ -23,6 +23,7 @@ Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
 "cs<character><new character>   Replace surrounding <character> with <newcharacter>
