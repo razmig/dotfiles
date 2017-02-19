@@ -140,6 +140,7 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:indentLine_color_term = 239
 
 set list lcs=tab:\┆_
+set backspace=indent,eol,start
 
 " Use silver searcher for grep 
 if executable('ag')
