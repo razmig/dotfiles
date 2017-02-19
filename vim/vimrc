@@ -8,21 +8,20 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'davidhalter/jedi-vim'
 
 Plugin 'airblade/vim-gitgutter'
 " ]c jump to next hunk (change) 
 " [c jump to previous hunk (change) 
 
 Plugin 'vim-airline/vim-airline'
-Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'tpope/vim-surround'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
 "cs<character><new character>   Replace surrounding <character> with <newcharacter>
@@ -41,33 +40,31 @@ Plugin 'mattn/emmet-vim'
 " Commands for emmet
 " type for example div.foo then <C-y> , 
 
-Plugin 'vim-scripts/cucumber.zip'
-
 Plugin 'tpope/vim-fugitive'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'alexbyk/vim-ultisnips-js-testing'
 Plugin 'Yggdroot/indentLine'
+call vundle#end()            " required
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#tabline#enabled = 1
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
 
 " Disable the tab selection of the YouCompleteMe
 let g:ycm_key_list_select_completion=[]
@@ -76,6 +73,7 @@ let g:ycm_key_list_previous_completion=[]
 " filetype plugin indent on    " required
 autocmd BufWritePre *.* :%s/\s\+$//e
 set relativenumber
+set number
 set colorcolumn=80
 set nowrap
 set expandtab
@@ -91,7 +89,6 @@ set smartcase
 set ignorecase
 set incsearch
 set hlsearch
-nnoremap <ESC> :nohlsearch<CR>
 
 set clipboard=unnamed
 "Highlight the active split
@@ -114,11 +111,6 @@ vnoremap <C-l> >gv
 " Scroll through the autocomple list with jk
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
-
-" Add some syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0 
@@ -152,8 +144,6 @@ nnoremap <C-x> :q <CR>
 
 nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
-" Open function definition in a vertical split
-nnoremap <C-]> :vsp <CR>:exec("tag /".expand("<cword>"))<CR><C-w>L
 autocmd VimEnter * NERDTree
 
 if filereadable(glob("~/.vimrc.local")) 
