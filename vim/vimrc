@@ -8,7 +8,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
 
 Plugin 'airblade/vim-gitgutter'
