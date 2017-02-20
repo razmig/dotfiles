@@ -114,10 +114,8 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0 
-let g:syntastic_check_on_open = 0 
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['jshint', 'eslint',  'jscs']
-let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'javascript'] }
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 let g:used_javascript_libs = 'chai,jquery,requirejs,react'
 
@@ -146,8 +144,8 @@ nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
 autocmd VimEnter * NERDTree
 
-if filereadable(glob("~/.vimrc.local")) 
-    source ~/.vimrc.local
+if filereadable(glob("~/.config/nvim/local.vim"))
+    source ~/.config/nvim/local.vim
 endif
 
 " Auto hightlight the best match in autocomplete menu
