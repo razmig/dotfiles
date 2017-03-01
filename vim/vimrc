@@ -19,8 +19,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'jiangmiao/auto-pairs'
-
 Plugin 'tpope/vim-surround'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
@@ -58,9 +56,6 @@ call vundle#end()            " required
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" Automatically displays all buffers when there's only one tab open.
-let g:airline#extensions#tabline#enabled = 1
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -119,12 +114,12 @@ let g:syntastic_check_on_wq = 0
 
 let g:used_javascript_libs = 'chai,jquery,requirejs,react'
 
-let g:ctrlp_use_caching = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l -i --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_by_filename = 1
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_by_filename = 0
+let g:ctrlp_cmd = 'CtrlP .'
+let g:ctrlp_clear_cache_on_exit = 1
 
 let g:indentLine_color_term = 239
 
