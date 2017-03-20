@@ -107,6 +107,9 @@ vnoremap <C-l> >gv
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
+" Quickly select the text you just pasted
+nnoremap gp `[v`]
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0 
 let g:syntastic_check_on_open = 0
