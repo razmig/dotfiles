@@ -138,6 +138,16 @@ nnoremap <C-x> :q <CR>
 nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
 autocmd VimEnter * NERDTree
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 if filereadable(glob("~/.config/nvim/local.vim"))
     source ~/.config/nvim/local.vim
