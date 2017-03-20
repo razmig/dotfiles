@@ -51,6 +51,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'alexbyk/vim-ultisnips-js-testing'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'FooSoft/vim-argwrap'
 call vundle#end()            " required
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -140,6 +141,9 @@ nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
 nnoremap <C-x> :q <CR>
 
 nmap <Leader>o :CtrlP<CR><C-\>:exe f
+
+" Binding for wrapping arguments
+nmap <Leader>aw :ArgWrap<CR>
 
 autocmd VimEnter * NERDTree
 " vp doesn't replace paste buffer
