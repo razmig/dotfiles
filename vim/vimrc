@@ -26,12 +26,6 @@ Plugin 'tpope/vim-surround'
 "ys<text-obj><character>        Surround text-object with <character>
 "dst                            Delete surround tag (works on HTML tags)
 
-Plugin 'tpope/vim-commentary'
-"Commands for Commenting"
-"gc2j   Comment down two lines
-"gcc    Comment out the current line
-"gcip   Comment out the current paragraph
-
 Plugin 'tpope/vim-repeat'
 
 Plugin 'mattn/emmet-vim'
@@ -52,6 +46,10 @@ Plugin 'alexbyk/vim-ultisnips-js-testing'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'FooSoft/vim-argwrap'
+Plugin 'terryma/vim-expand-region'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/nerdcommenter'
+
 call vundle#end()            " required
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -68,6 +66,7 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
 " filetype plugin indent on    " required
+filetype plugin on
 autocmd BufWritePre *.* :%s/\s\+$//e
 set relativenumber
 set number
@@ -112,10 +111,16 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 " Quickly select the text you just pasted
 nnoremap gp `[v`]
 
+" http://vim.wikia.com/wiki/Copy_or_change_search_hit
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0 
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list=1
 
 let g:used_javascript_libs = 'chai,jquery,requirejs,react'
 
@@ -131,6 +136,15 @@ let g:indentLine_color_term = 239
 set list lcs=tab:\┆_
 set backspace=indent,eol,start
 
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
 " Use silver searcher for grep 
 if executable('ag')
   " Use ag over grep
@@ -140,6 +154,12 @@ endif
 nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
 nnoremap <C-x> :q <CR>
 
+" Hit v to select one character
+" Hit vagain to expand selection to word
+" Hit v again to expand to paragraph
+" Hit <C-v> go back to previous selection if I went too far
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 nmap <Leader>o :CtrlP<CR><C-\>:exe f
 
 " Binding for wrapping arguments
@@ -160,6 +180,5 @@ vmap <silent> <expr> p <sid>Repl()
 if filereadable(glob("~/.config/nvim/local.vim"))
     source ~/.config/nvim/local.vim
 endif
-
 " Auto hightlight the best match in autocomplete menu
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
