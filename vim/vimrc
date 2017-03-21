@@ -177,8 +177,8 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-if filereadable(glob("~/.config/nvim/local.vim"))
-    source ~/.config/nvim/local.vim
+if filereadable(glob("~/local.vim"))
+    source ~/local.vim
 endif
 " Auto hightlight the best match in autocomplete menu
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
