@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-syntax enable
 let mapleader = "\<Space>"
 set noswapfile
 " set the runtime path to include Vundle and initialize
@@ -32,8 +31,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
 
 " The below plugin for vim snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -55,7 +55,7 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
 filetype plugin indent on    " required
-filetype plugin on
+syntax enable
 
 " Remove trailing spaces on save
 autocmd BufWritePre *.* :%s/\s\+$//e
@@ -156,6 +156,5 @@ nnoremap <esc> :noh<return><esc>
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
-syntax enable
 " Auto hightlight the best match in autocomplete menu
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
