@@ -17,10 +17,11 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
 "cs<character><new character>   Replace surrounding <character> with <newcharacter>
@@ -31,6 +32,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 
 " The below plugin for vim snipmate
@@ -52,7 +54,7 @@ call vundle#end()            " required
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
-" filetype plugin indent on    " required
+filetype plugin indent on    " required
 filetype plugin on
 
 " Remove trailing spaces on save
@@ -105,12 +107,8 @@ vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 
-let g:ctrlp_max_files=0
-let g:ctrlp_user_command = 'ag %s -l -i --hidden --nocolor -g ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_by_filename = 0
-let g:ctrlp_cmd = 'CtrlP .'
-let g:ctrlp_clear_cache_on_exit = 0
+nmap <C-p> :FZF <CR>
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 
 let g:indentLine_color_term = 239
 
@@ -132,7 +130,8 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --hidden
 endif
 " bind <C-g> to grep word under cursor and open in quickfix buffer
-nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
+" nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
+nnoremap <C-g> :Ag <CR>
 nnoremap <C-x> :q <CR>
 
 " Hit v to select one character
@@ -154,8 +153,9 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 
-if filereadable(glob("~/local.vim"))
-    source ~/local.vim
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
 endif
+syntax enable
 " Auto hightlight the best match in autocomplete menu
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
