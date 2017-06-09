@@ -19,9 +19,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ternjs/tern_for_vim'
-Plugin 'tpope/vim-surround'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-surround'
 "Commands for surround plugin
 "ds<character>                  Delete surrounding <character>
 "cs<character><new character>   Replace surrounding <character> with <newcharacter>
@@ -34,16 +34,24 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
+Plugin 'othree/html5.vim'
+Plugin 'evidens/vim-twig'
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
+Plugin 'craigemery/vim-autotag'
 
 " The below plugin for vim snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'garbas/vim-snipmate'
 Plugin 'SirVer/ultisnips'
+
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+Plugin 'docteurklein/vim-symfony'
+Plugin 'algotech/ultisnips-php'
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'alexbyk/vim-ultisnips-js-testing'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
@@ -119,10 +127,12 @@ nmap <C-p> :FZF <CR>
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 
 let g:indentLine_color_term = 239
-let g:indentLine_char = '.'
+" let g:indentLine_char = '.'
 highlight SpecialKey ctermfg=239
 
-set list lcs=tab:\┆_
+set listchars=tab:\┆.
+set list
+
 set backspace=indent,eol,start
 
 let g:used_javascript_libs = 'jquey,ramda,underscore,react,flux,chai,d3'
@@ -142,8 +152,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --hidden
 endif
 " bind <C-g> to grep word under cursor and open in quickfix buffer
-" nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><C-w>L
-nnoremap <C-g> :Ag <CR>
+nnoremap <C-g> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <C-x> :q <CR>
 nnoremap <C-t> :TernDefPreview <CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
@@ -167,6 +176,9 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :pc <CR> :noh <return><esc>
 autocmd CompleteDone * pclose
+
+" Open tag in preview window
+nnoremap <C-]> <Esc>:exe "ptjump " . expand("<cword>")<Esc>
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
