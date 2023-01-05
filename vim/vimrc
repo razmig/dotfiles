@@ -15,9 +15,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdTree'
-Plugin 'scrooloose/syntastic'
 Plugin 'vim-multiple-cursors'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -32,38 +30,22 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
-Plugin 'evidens/vim-twig'
-Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
-Plugin 'craigemery/vim-autotag'
 
 " The below plugin for vim snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'garbas/vim-snipmate'
 Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-Plugin 'docteurklein/vim-symfony'
-Plugin 'algotech/ultisnips-php'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'alexbyk/vim-ultisnips-js-testing'
 Plugin 'Yggdroot/indentLine'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'FooSoft/vim-argwrap'
 Plugin 'terryma/vim-expand-region'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
-call vundle#end()            " required
-
-" Disable the tab selection of the YouCompleteMe
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+call vundle#nd()            " required
 
 filetype plugin indent on    " required
 syntax enable
